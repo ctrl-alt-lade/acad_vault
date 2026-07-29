@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>War Room | Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans p-6">
+    <div class="max-w-5xl mx-auto space-y-6">
+        
+        <header class="flex justify-between items-end border-b border-slate-800 pb-4">
+            <div>
+                <h1 class="text-2xl font-bold text-white">Campaign War Room</h1>
+                <p class="text-sm text-slate-400">Live vault analytics and incoming requests.</p>
+            </div>
+            <a href="/" class="text-xs text-blue-500 hover:underline">View Live Vault &rarr;</a>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Trending Courses (The Anxiety Tracker) -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-lg">
+                <h2 class="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">🔥 Trending Courses (Most Clicked)</h2>
+                <ul class="space-y-3">
+                    {% for stat in trending %}
+                    <li class="flex justify-between items-center bg-slate-950 px-4 py-3 rounded-lg border border-slate-800">
+                        <span class="font-bold text-blue-400">{{ stat.course }}</span>
+                        <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-md">{{ stat.clicks }} clicks</span>
+                    </li>
+                    {% else %}
+                    <li class="text-sm text-slate-500 text-center py-4">No clicks logged yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Pending Requests (The Favor Engine) -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-lg">
+                <h2 class="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">🚨 Pending Requests</h2>
+                <ul class="space-y-3">
+                    {% for req in requests %}
+                    <li class="bg-slate-950 px-4 py-3 rounded-lg border border-slate-800">
+                        <div class="flex justify-between items-start mb-1">
+                            <span class="font-bold text-white">{{ req.student_name }} <span class="text-slate-500 text-xs">({{ req.level }}L)</span></span>
+                            <span class="text-[10px] text-slate-500">{{ req.timestamp.strftime('%b %d, %H:%M') }}</span>
+                        </div>
+                        <p class="text-sm text-slate-300 mb-2">Needs: <span class="text-blue-300">{{ req.requested_topic }}</span></p>
+                        <div class="flex items-center space-x-2">
+                            <a href="https://wa.me/234{{ req.phone_number[-10:] }}" target="_blank" class="text-xs bg-green-600 hover:bg-green-500 text-white px-3 py-1 rounded transition">
+                                WhatsApp Now
+                            </a>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li class="text-sm text-slate-500 text-center py-4">No pending requests.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
