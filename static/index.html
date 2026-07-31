@@ -25,20 +25,27 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased pb-20">
 
-    <!-- Header / Branding -->
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-30">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- General Welcome Banner -->
+        <header class="mb-8 pt-4 border-b border-slate-800/80 pb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
-                <h1 class="text-xl font-bold tracking-tight text-white">Engineering Vault</h1>
-                <p class="text-xs text-slate-400 font-medium">Maintained by Gracious, DML & the Action Team</p>
+                <!-- Brand Name Slot (Uncomment and edit once you lock in a name) -->
+                 <span class="text-xs font-bold tracking-widest uppercase text-brand-400 mb-1 block">NEXUS</span> >
+                
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                    Engineering Resource Vault
+                </h1>
+                <p class="text-sm text-slate-400 mt-1 max-w-xl">
+                    Your centralized hub for verified course outlines, curriculum breakdowns, and academic resources across all engineering levels.
+                </p>
             </div>
-            <button onclick="openRequestModal()" class="text-xs font-semibold bg-brand-600 hover:bg-brand-500 text-white px-3 py-2 rounded-lg transition shadow-sm">
-                + Request Material
-            </button>
-        </div>
-    </header>
-
-    <main class="max-w-4xl mx-auto px-4 pt-6">
+            
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    System Live
+                </span>
+            </div>
+        </header>
 
         <!-- Master Outlines Banner -->
         <div class="bg-gradient-to-r from-slate-900 to-brand-900/40 border border-slate-800 rounded-xl p-4 mb-6 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
